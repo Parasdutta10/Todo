@@ -1,7 +1,6 @@
-import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import CheckBox from '@react-native-community/checkbox';
+import React, { useState } from "react";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 
 const CustomInput = (Props: {
   placeholder: string;
@@ -10,6 +9,7 @@ const CustomInput = (Props: {
   onChangeText: (text: string) => void;
 }) => {
   const [checked,setChecked] = useState(false);
+  console.log('hello this isj first change')
   return (
     <View style={styles.box}>
       {/* <CheckBox 
