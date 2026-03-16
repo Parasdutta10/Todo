@@ -1,4 +1,5 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 
@@ -8,22 +9,27 @@ const CustomInput = (Props: {
   value: string;
   onChangeText: (text: string) => void;
 }) => {
-  const [checked,setChecked] = useState(false);
-  console.log('hello this isj first change')
+  const [checked, setChecked] = useState(false);
+
   return (
     <View style={styles.box}>
-      {/* <CheckBox 
-       value={checked}
-       onValueChange={setChecked}/> */}
+      <Checkbox value={checked} onValueChange={setChecked} />
       <TextInput
-        style={styles.Text}
+        style={[
+          styles.Text,
+          { textDecorationLine: checked ? "line-through" : "none" 
+            
+           },
+           {color: checked ? "white" : "black"},
+             
+        ]}
         placeholder={Props.placeholder}
         value={Props.value}
         onChangeText={Props.onChangeText}
-
+        editable={!checked}
       />
       <TouchableOpacity onPress={() => Props.onPress()}>
-        <MaterialCommunityIcons name="delete-empty" size={27} color="black" />
+        <MaterialCommunityIcons name="delete-empty" size={28} color="black" />
       </TouchableOpacity>
     </View>
   );
@@ -36,14 +42,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "white",
     paddingLeft: 10,
-    borderRadius: 20,
+    paddingRight: 10,
+    borderRadius: 10,
     alignItems: "center",
+    gap: 10,
+    margin: 10,
   },
   Text: {
-    color: "black",
+  
     fontSize: 16,
     fontWeight: "bold",
 
-    width: "90%",
+    width: "80%",
   },
 });
